@@ -2,7 +2,6 @@ const express = require('express');
 const bodyparser = require('body-parser')
 const morgan = require('morgan');
 const userRoute = require('./routes/users');
-const fs = require('fs');
 let data = require('./user')
 
 /* This is for "type": "module"
@@ -14,10 +13,12 @@ let data = require('./user')
 
 const app = express();
 const port = 5000;
+
 app.use(bodyparser.json());
 app.use(morgan('tiny'))
 app.use('/users',userRoute.router);
 app.use(express.urlencoded({extended:false}));
+
 app.get('/',(req,res)=>{
     res.json(data);
 })
