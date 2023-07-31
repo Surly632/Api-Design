@@ -50,4 +50,33 @@ router.post('/',(req,res)=>{
     }
 }) 
 
+router.post('/:id',(req,res)=>{
+    const id = req.params.id;
+    const person = data.find((single)=>{return single.id===id});
+    console.log(id);
+  if(person) {
+     res.json(person);
+  }
+  else
+   res
+   .status(404)
+   .json({success:false,message:"User Not Found"});
+})
+
+router.delete('/:id',(req,res)=>{
+  const id = req.params.id;
+  const newdata = data.filter((person)=> id!==person.id);
+  const persons = JSON.stringify(newdata,null,3);
+  if(newdata.length===data.length) {
+     res.json({success:false,message:"User does not exist!"});
+     return;
+  }
+  fs.writeFile(filepath,persons,{flag:'w',encoding:'utf-8'},()=>{});
+  const deleteduser = data.find((person)=>id==person.id);
+  res.json({success:true,message:"The user was deleted successfully",person:deleteduser});
+})
+router.patch('/:id',(req,res)=>{
+    const id = req.params.id;
+})
+
 module.exports={router};
