@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const userRoute = require('./routes/users');
 const fs = require('fs');
 let data = require('./user')
+
 /* This is for "type": "module"
 *import express from 'express';
 *import bodyparser from 'body-parser';

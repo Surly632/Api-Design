@@ -50,7 +50,7 @@ router.post('/',(req,res)=>{
     }
 }) 
 
-router.post('/:id',(req,res)=>{
+router.get('/:id',(req,res)=>{
     const id = req.params.id;
     const person = data.find((single)=>{return single.id===id});
     console.log(id);
@@ -77,6 +77,20 @@ router.delete('/:id',(req,res)=>{
 })
 router.patch('/:id',(req,res)=>{
     const id = req.params.id;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const age = req.body.age;
+    const person = data.find((person)=>id===person.id);
+    const newdata = data.filter((person)=>person.id!==id);
+    newdata.push(person);
+    if(person && firstname) person.firstname = firstname ;
+    if(person && lastname) person.lastname = lastname ;
+    if(person && age) person.age = age;
+
+    const users = JSON.stringify(newdata,null,3);
+
+    fs.writeFile(filepath,users,{flag:'w',encoding:'utf-8'},()=>{});
+    res.json({success:true,message:"Updated successfully",person:person});
 })
 
 module.exports={router};

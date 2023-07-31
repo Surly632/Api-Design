@@ -96,12 +96,6 @@
       "age": 28
    },
    {
-      "id": "cf8ea777-2743-4443-8f0f-5a35f6d86e4a",
-      "firstname": "Matthew",
-      "lastname": "Lee",
-      "age": 31
-   },
-   {
       "id": "d0efc9b9-1f91-4f84-8f4f-d43c01dc0599",
       "firstname": "John",
       "lastname": "Doe",
@@ -200,7 +194,7 @@
    {
       "id": "cf8ea777-2743-4443-8f0f-5a35f6d86e4a",
       "firstname": "Matthew",
-      "lastname": "Lee",
-      "age": 31
+      "lastname": "Lewis",
+      "age": 35
    }
 ]
